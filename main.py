@@ -4,8 +4,6 @@ Angel Geovanny Ordón Colchaj
 '''
 from tkinter import *
 
-from graphviz import view
-
 # Vistas
 from views.dashboardView import DashboardView
 
@@ -19,9 +17,28 @@ class Main:
         #window = Tk()
 
         self.window.title("Bienvenido a mi APP")
-        self.window.geometry("300x200")
-        self.window.eval('tk::PlaceWindow . center')
+        #self.window.geometry("300x200")
+        #self.window.eval('tk::PlaceWindow . center')
+        #self.window.resizable(0, 0)
+
+        # ------------------------------
+        w = 300 # width for the Tk root
+        h = 200 # height for the Tk root
+
+        # get screen width and height
+        ws = self.window.winfo_screenwidth() # width of the screen
+        hs = self.window.winfo_screenheight() # height of the screen
+
+        # calculate x and y coordinates for the Tk root window
+        x = (ws/2) - (w/2)
+        y = (hs/2) - (h/2)
+
+        # set the dimensions of the screen 
+        # and where it is placed
+        self.window.geometry('%dx%d+%d+%d' % (w, h, x, y))
+
         self.window.resizable(0, 0)
+        # ------------------------------
 
         # Configuracion del grid
         self.window.columnconfigure(0, weight=2)
@@ -38,10 +55,10 @@ class Main:
         self.welcome_label.grid(column=1, row=0, padx=5, pady=5)
 
         # Boton
-        getin_button = Button(window, text="Entrar", font=("Arial", 14), command=lambda: clicked())
+        getin_button = Button(window, text="Entrar", font=("Arial", 14), command=lambda: dashboardView())
         getin_button.grid(column=1, row=1, padx=5, pady=5)
 
-        def clicked():
+        def dashboardView():
             self.window.destroy()
             view_dashboardView()
 
