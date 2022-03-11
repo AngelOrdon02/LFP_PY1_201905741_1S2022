@@ -4,6 +4,14 @@ Angel Geovanny Ordón Colchaj
 '''
 from tkinter import *
 
+from graphviz import view
+
+# Vistas
+from views.dashboardView import DashboardView
+
+# Instancias
+view_dashboardView = DashboardView()
+
 class Main:
     def __init__(self, window):
         self.window = window
@@ -30,8 +38,12 @@ class Main:
         self.welcome_label.grid(column=1, row=0, padx=5, pady=5)
 
         # Boton
-        self.entry_button = Button(self.window, text="Entrar", font=("Arial", 14))
-        self.entry_button.grid(column=1, row=1, padx=5, pady=5)
+        getin_button = Button(window, text="Entrar", font=("Arial", 14), command=lambda: clicked())
+        getin_button.grid(column=1, row=1, padx=5, pady=5)
+
+        def clicked():
+            self.window.destroy()
+            view_dashboardView()
 
 if __name__ == "__main__":
     window = Tk()
