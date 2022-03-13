@@ -2,17 +2,18 @@ from tkinter import *
 from tkinter import messagebox
 
 # Vistas
-from views.analyzerView import AnalyzerView
-from views.reportsView import ReportsView
+#from views.dashboardView import DashboardView
 
 # Instancias
-view_analyzerView = AnalyzerView()
-view_reportsView = ReportsView()
+#view_dashboardView = DashboardView()
 
-class DashboardView:
+class ReportsView:
 
     @staticmethod
-    def __call__(hola):
+    def __call__():
+        import views.dashboardView
+        view_dashboardView = views.dashboardView.DashboardView()
+
         #self.window = window
         
         window = Tk()
@@ -57,25 +58,22 @@ class DashboardView:
         welcome_label.grid(column=1, row=0, padx=5, pady=5)
 
         # Botones
-        analyzer_button = Button(window, text="Analizador", font=("Arial", 14), command=lambda: analyzer_view())
+        analyzer_button = Button(window, text="Analizador", font=("Arial", 14), command=lambda: clicked1())
         analyzer_button.grid(column=1, row=1, padx=5, pady=5)
 
-        reports_button = Button(window, text="Reportes", font=("Arial", 14), command=lambda: reports_view())
+        reports_button = Button(window, text="Reportes", font=("Arial", 14), command=lambda: clicked2())
         reports_button.grid(column=1, row=2, padx=5, pady=5)
 
         # Salir
         exit_button = Button(window, text="Salir", font=("Arial", 14), command=lambda: exit())
         exit_button.grid(column=2, row=0, sticky=NE, padx=5, pady=5)
 
-        def analyzer_view():
-            window.destroy()
-            #hola = "hola"
-            view_analyzerView()
+        def clicked1():
+            pass
 
-        def reports_view():
+        def clicked2():
             #print(hola)
-            window.destroy()
-            view_reportsView()
+            pass
         
         def exit():
             messagebox.showinfo('Mensaje', 'Gracias por utilizar el programa.')

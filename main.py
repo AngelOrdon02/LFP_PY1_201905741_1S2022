@@ -60,7 +60,8 @@ class Main:
 
         def dashboardView():
             self.window.destroy()
-            view_dashboardView()
+            hola = "hola"
+            view_dashboardView(hola)
 
 if __name__ == "__main__":
     window = Tk()
